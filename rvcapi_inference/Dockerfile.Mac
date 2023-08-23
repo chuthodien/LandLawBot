@@ -1,0 +1,32 @@
+FROM python:3.10
+
+ENV TZ=Asia/Kolkata
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get install -y wget
+RUN apt-get install -y ca-certificates
+RUN apt-get install -y ffmpeg
+RUN apt-get install -y build-essential --fix-missing
+RUN apt-get install -y dkms
+RUN apt-get install -y gnupg2
+RUN apt-get install -y lsb-release
+
+WORKDIR /aime/rvc
+COPY . .
+RUN python3 --version
+RUN apt-get install -y python3-pip
+RUN pip install -r requirements.txt
+RUN wget "https://docs.google.com/uc?export=download&confirm=t&amp&id=1gn3yWMyFDMrERgC23PfZup2mrNcnk9YT" -O hubert_base.pt
+
+RUN mkdir /characters
+RUN mkdir /characters/male_test1
+
+WORKDIR /aime/rvc/characters/male_test1
+RUN wget "https://docs.google.com/uc?export=download&confirm=t&amp&id=1CQwH0FgepvWLIhPrjoFesYmsLuWNUOYP" -O added_index.index
+RUN wget "https://docs.google.com/uc?export=download&confirm=t&amp&id=1CU_Q5V479XHAckb6KNWu9AGcXBf-92a_" -O model.pth
+
+WORKDIR /aime/rvc
+
+ENTRYPOINT ["python3", "api.py"]
+

@@ -1,0 +1,6 @@
+/venv
+*.pyc
+hubert_base.pt
+/dataset
+/pretrained
+model.pt
