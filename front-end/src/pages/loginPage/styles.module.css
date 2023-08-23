@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #f6f8fa;
+}
+
+.lineButton {
+  margin: 1rem;
+  width: 303px;
+  height: 88px;
+  background: url('../../assets/images/line-button.png') no-repeat;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.lineButton:hover {
+  background: url('../../assets/images/line-button-hover.png') no-repeat;
+}
+
+.lineButton:active {
+  background: url('../../assets/images/line-button-active.png') no-repeat;
+}
